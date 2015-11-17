@@ -111,7 +111,7 @@ namespace Lowis_Reports_Testing.ObjectLibrary
                       {
                           if (exp.Length > 0)
                           {
-                              if (cleanIntermediateWhiteSpaces(trimcustom(act)).ToLower().Contains(cleanIntermediateWhiteSpaces(trimcustom(exp)).ToLower()))
+                              if (cleanIntermediateWhiteSpaces(act).ToLower().Contains(cleanIntermediateWhiteSpaces(exp).ToLower()))
                               {
                                   dr["TestCaseNameORId"] = tcnameid;
                                   dr["LinkName"] = linkName;
@@ -192,8 +192,8 @@ namespace Lowis_Reports_Testing.ObjectLibrary
             string op = "";
             char[] chartotrim = { ' ', '\n', '\t' };
             op = inp.Trim(chartotrim);
-            string fop = op.Replace('\n', '_');
-            fop = fop.Replace('\r', '_');
+            string fop = op.Replace('\n', ' ');
+            fop = fop.Replace('\r', ' ');
             if (fop.Length > 255)
             {
                 // trim charts to 255 only 
@@ -212,7 +212,13 @@ namespace Lowis_Reports_Testing.ObjectLibrary
 
            string  pattn = "\\s+" ;
            Regex re = new Regex(pattn);
-           string retstring = re.Replace(strinput, "_");
+           string retstring = re.Replace(strinput, " ");
+
+           string op = "";
+           char[] chartotrim = { ' ', '\n', '\t' };
+           op = retstring.Trim(chartotrim);
+           string fop = op.Replace('\n', ' ');
+           fop = fop.Replace('\r', ' ');
            return retstring;
         
         }
