@@ -268,6 +268,10 @@ namespace Lowis_Reports_Testing.ObjectLibrary
                         //   string actualColumnNameText = getWebTableColumnNames(columnWebTableIndex);
                         hlp.AreEqual(testcaseNameOrId, linkName, "Title", expectedTitle, actualTitle, CompareType.Contains);
                         string innertextcompare = expectedColumnNametext.Replace(";", "");
+                        if (innertextcompare.Contains("_"))
+                        {
+                            innertextcompare = innertextcompare.Replace("_", " ");
+                        }
                         hlp.AreEqual(testcaseNameOrId, linkName, "ColumnNamesText", innertextcompare, actualColumnNameText, CompareType.Contains);
                         // hlp.LogtoTextFile("Col names retreived" + getWebTableColumnNames(columnWebTableIndex));
                     }
@@ -278,6 +282,10 @@ namespace Lowis_Reports_Testing.ObjectLibrary
                         //   string actualColumnNameText = getWebTableColumnNames(columnWebTableIndex);
                         hlp.AreEqual(testcaseNameOrId, linkName, "Title", expectedTitle, actualTitle, CompareType.Contains);
                         string innertextcompare = expectedColumnNametext.Replace(";", "");
+                        if (innertextcompare.Contains("_"))
+                        {
+                            innertextcompare = innertextcompare.Replace("_", " ");
+                        }
                         hlp.AreEqual(testcaseNameOrId, linkName, "ColumnNamesText", innertextcompare, actualColumnNameText, CompareType.Contains);
                         // hlp.LogtoTextFile("Col names retreived" + getWebTableColumnNames(columnWebTableIndex));
                     }
@@ -293,6 +301,10 @@ namespace Lowis_Reports_Testing.ObjectLibrary
                         }
                         hlp.AreEqual(testcaseNameOrId, linkName, "Title", expectedTitle, actualTitle, CompareType.Contains);
                         string innertextcompare = expectedColumnNametext.Replace(";", "");
+                        if (innertextcompare.Contains("_"))
+                        {
+                            innertextcompare = innertextcompare.Replace("_", " ");
+                        }
                         hlp.AreEqual(testcaseNameOrId, linkName, "ColumnNamesText", innertextcompare, actualColumnNameText, CompareType.Contains);
                         // hlp.LogtoTextFile("Col names retreived" + getWebTableColumnNames(columnWebTableIndex));
                     }
@@ -307,7 +319,11 @@ namespace Lowis_Reports_Testing.ObjectLibrary
                     Playback.Wait(2000);
                     string verifytext = System.Windows.Forms.Clipboard.GetText();
                     hlp.AreEqual(testcaseNameOrId, linkName, "Title", expectedTitle, verifytext, CompareType.Contains);
-                    string innertextcompare = expectedColumnNametext.Replace(";", "");
+                    string innertextcompare = expectedColumnNametext.Replace(";", " ");
+                    if (innertextcompare.Contains("_"))
+                    {
+                        innertextcompare = innertextcompare.Replace("_", " ");
+                    }
                     hlp.AreEqual(testcaseNameOrId, linkName, "ColumnNamesText", innertextcompare, verifytext, CompareType.Contains);
                 }
                 hlp.LogtoFileCSV(hlp.dtRep);
